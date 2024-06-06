@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="D:\html\logo.png.jpg" alt="Your Logo" class="logo-img"/>
+        </div>
+    </header>
+    <div class="cards">
+        <div class="company-details">
+            <p>FROM</p>
+            <h2>IT Services Agency</h2>
+            <p>
+                Bansal Setia & Co
+1st Floor,<br> ℅ Hind Oil Traders
+Tapa Mandi, <br>Barnala
+Punjab – 148108
+            </p>
+        </div>
+        <div class="client-details">
+            <p>TO</p>
+            <div id="client-details">
+                <!-- Client details will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+    <div class="invoice-info">
+        <div class="in">
+            <p><span>Invoice No: </span>012345</p>
+            <p><span>Due Date: </span>Dec 31st, 2021</p>
+        </div>
+        <p><span>Invoice Date: </span>Dec 14th, 2021</p>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>HRS/QTY</th>
+                    <th>Rate</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Network Administration</b>
+                        <p>Network administration 
+                            designing,configuring,& 
+                            testing network software,
+                            hardware,& operating 
+                            system</p>
+                    </td>
+                    <td>130.00</td>
+                    <td>USD 8,450.00</td>
+                    <td>USD 8,450.00</td>
+                </tr>
+                <tr>
+                    <td><b>Automated Network Testing</b>
+                    <p>Development,testing,deployment & 
+                        support for an automated network
+                         testing platform</p></td>
+                    <td>70</td>
+                    <td>USD 110.00</td>
+                    <td>USD 7,700.00</td>
+                </tr>
+                <tr>
+                    <td><b>IT Support On Google Drive</b>
+                    <p>
+                        Moving files,archiving,
+                        optimizing storage workflows 
+                        and architecture & security
+                    </p></td>
+                    <td>15</td>
+                    <td>USD 45.00</td>
+                    <td>USD 675.00</td>
+                </tr>
+                <tr>
+                    <td><b>Computer Security Specialist</b>
+                    <p>
+                        Implement and maintain 
+                        security systems,data 
+                        recovery plans, & firewalls
+                    </p></td>
+                    <td>135.00</td>
+                    <td>USD 5,400.00</td>
+                    <td>USD 5,400.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="summary">
+        <table class="striped">
+            <thead>
+               
+                    <th class="heading">Invoice Summary</th>
+                
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>USD 32542</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>USD 32542</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+    <script>
+        // Retrieve stored data from localStorage
+        const company = localStorage.getItem('company');
+        const address = localStorage.getItem('address');
+        const email = localStorage.getItem('email');
+
+        // Populate the client details section
+        document.getElementById('client-details').innerHTML = `
+            <h2>${company}</h2>
+            ${address}<br>
+            ${email}
+        `;
+    </script>
+</body>
+</html>
