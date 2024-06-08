@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Details</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .body{
+            margin: 10rem;
+            border: 1px solid black;
+        }
+        /* Add styles as necessary */
+        .card {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        .card p {
+            /* margin: 10px 0; */
+        }
+        .card h2 {
+            margin-top: 0;
+        }
+        .address{
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .inde{
+            border: 1px solid rgb(177, 175, 175);
+            display: grid;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        .date{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="inde">
+        <div class="address">
+            <div class="card">
+                <p>FROM</p>
+                <h2>IT Services Agency</h2>
+                <p>
+                    Bansal Setia & Co<br>
+                    1st Floor, ℅ Hind Oil Traders<br>
+                    Tapa Mandi, Barnala<br>
+                    Punjab – 148108
+                </p>
+            </div>
+            <div class="card">
+                <p>TO</p>
+                <h2 id="client-company-name"></h2>
+                <p id="client-details"></p>
+                <p id="client-email"></p>
+            </div>
+        </div>
+        <div class="card-date">
+            <div class="date">
+                <p>Invoice Number: <span id="invoice-number"></span></p>
+                <p>Due Date: <span id="due-date"></span></p>
+            </div>
+            <p>Invoice Date: <span id="invoice-date"></span></p>
+        </div>
+        <div class="table-container">
+            <table id="dynamicTable">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <div class="summary">
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th class="heading">Invoice Summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>USD 32542</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>USD 32542</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        // Retrieve stored data from localStorage
+        const companyName = localStorage.getItem('companyName');
+        const country = localStorage.getItem('country');
+        const companyState = localStorage.getItem('companyState');
+        const companyCity = localStorage.getItem('companyCity');
+        const companyPincode = localStorage.getItem('companyPincode');
+        const email = localStorage.getItem('email');
+        const invoiceNumber = localStorage.getItem('invoiceNumber');
+        const dueDate = localStorage.getItem('dueDate');
+        const invoiceDate = localStorage.getItem('invoiceDate');
+        const tableData = JSON.parse(localStorage.getItem('tableData'));
+    
+        // Populate the client details section
+        document.getElementById('client-company-name').textContent = companyName;
+        document.getElementById('client-details').innerHTML = `${companyCity}, ${companyState}<br>${country}, ${companyPincode}`;
+        document.getElementById('client-email').textContent = email;
+        document.getElementById('invoice-number').textContent = invoiceNumber;
+        document.getElementById('due-date').textContent = dueDate;
+        document.getElementById('invoice-date').textContent = invoiceDate;
+    
+        // Populate the table with the stored data
+        const table = document.getElementById('dynamicTable').getElementsByTagName('tbody')[0];
+    
+        tableData.forEach(data => {
+            const row = table.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+    
+            cell1.textContent = data.item;
+            cell2.textContent = data.subtotal;
+        });
+    </script>
+    
+</body>
+</html>

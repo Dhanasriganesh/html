@@ -13,6 +13,7 @@ body {
     align-items: flex-start;
     gap: 2rem;
 }
+
 .logo {
     flex: 1;
 }
@@ -52,6 +53,24 @@ header {
     padding: 20px;
     width: 70%;
     height: 100%;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.get{
+    display: flex;
+    justify-content: center;
+    background-color: #007BFF;
+    color: #fff;
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .first{
     display: flex;
