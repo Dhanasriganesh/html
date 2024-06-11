@@ -6,11 +6,13 @@
     <title>Invoice Details</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .body{
+        .body {
             margin: 10rem;
             border: 1px solid black;
         }
-        /* Add styles as necessary */
+        .content{
+            padding: 20px;
+        }
         .card {
             width: 300px;
             margin: 20px auto;
@@ -25,82 +27,89 @@
         .card h2 {
             margin-top: 0;
         }
-        .address{
+        .address {
             display: flex;
             justify-content: space-between;
             gap: 20px;
         }
-        .inde{
+        .inde {
             border: 1px solid rgb(177, 175, 175);
             display: grid;
             justify-content: center;
             width: 100%;
             height: 100%;
         }
-        .date{
+        .date {
             display: flex;
             justify-content: space-between;
+        }
+        .bold {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    
     <div class="inde">
-        <div class="address">
-            <div class="card">
-                <p>FROM</p>
-                <h2>IT Services Agency</h2>
-                <p>
-                    Bansal Setia & Co<br>
-                    1st Floor, ℅ Hind Oil Traders<br>
-                    Tapa Mandi, Barnala<br>
-                    Punjab – 148108
-                </p>
+        <div class="content">
+            <header>
+                <div class="logo">
+                    <img src="logo.png.jpg" alt="Your Logo" class="logo-img"/>
+                </div>
+            </header>
+            <div class="address">
+                <div class="card">
+                    <p>FROM</p>
+                    <h2>IT Services Agency</h2>
+                    <p>
+                        Bansal Setia & Co<br>
+                        1st Floor, ℅ Hind Oil Traders<br>
+                        Tapa Mandi, Barnala<br>
+                        Punjab – 148108
+                    </p>
+                </div>
+                <div class="card">
+                    <p>TO</p>
+                    <h2 id="client-company-name"></h2>
+                    <p id="client-details"></p>
+                    <p id="client-email"></p>
+                </div>
             </div>
-            <div class="card">
-                <p>TO</p>
-                <h2 id="client-company-name"></h2>
-                <p id="client-details"></p>
-                <p id="client-email"></p>
+            <div class="card-date">
+                <div class="date">
+                    <p>Invoice Number: <span id="invoice-number"></span></p>
+                    <p>Due Date: <span id="due-date"></span></p>
+                </div>
+                <p>Invoice Date: <span id="invoice-date"></span></p>
             </div>
-        </div>
-        <div class="card-date">
-            <div class="date">
-                <p>Invoice Number: <span id="invoice-number"></span></p>
-                <p>Due Date: <span id="due-date"></span></p>
+            <div class="table-container">
+                <table id="dynamicTable">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
             </div>
-            <p>Invoice Date: <span id="invoice-date"></span></p>
-        </div>
-        <div class="table-container">
-            <table id="dynamicTable">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Rows will be populated by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-        <div class="summary">
-            <table class="striped">
-                <thead>
-                    <tr>
-                        <th class="heading">Invoice Summary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td>USD 32542</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>USD 32542</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="summary">
+                <table class="striped">
+                    <thead>
+                        <tr>
+                            <th class="heading">Invoice Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total</td>
+                            <td id="total-amount">USD 0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script>
@@ -114,7 +123,7 @@
         const invoiceNumber = localStorage.getItem('invoiceNumber');
         const dueDate = localStorage.getItem('dueDate');
         const invoiceDate = localStorage.getItem('invoiceDate');
-        const tableData = JSON.parse(localStorage.getItem('tableData'));
+        const tableData = JSON.parse(localStorage.getItem('tableData')) || [];
     
         // Populate the client details section
         document.getElementById('client-company-name').textContent = companyName;
@@ -124,18 +133,28 @@
         document.getElementById('due-date').textContent = dueDate;
         document.getElementById('invoice-date').textContent = invoiceDate;
     
-        // Populate the table with the stored data
+        // Populate the table with the stored data and calculate total
         const table = document.getElementById('dynamicTable').getElementsByTagName('tbody')[0];
+        let total = 0;
     
         tableData.forEach(data => {
+            const items = data.item.split('\n'); // Split main item and sub-items into an array
+            const mainItem = items.shift(); // Extract the main item
+            const subItems = items.length > 0 ? `(${items.join(' ')})` : ''; // Join sub-items into a single string
+    
             const row = table.insertRow();
             const cell1 = row.insertCell(0);
             const cell2 = row.insertCell(1);
-    
-            cell1.textContent = data.item;
+
+            cell1.innerHTML = data.item.replace(/\[.+?\]/g, ''); 
+            cell1.innerHTML = `<span class="bold">${mainItem}</span><br>${subItems.replace(/\[.+?\]/g, '')}`;
             cell2.textContent = data.subtotal;
-        });
-    </script>
     
+            total += parseFloat(data.subtotal) || 0;
+        });
+
+        // Display the total amount
+        document.getElementById('total-amount').textContent = `USD ${total.toFixed(2)}`;
+    </script>
 </body>
 </html>
