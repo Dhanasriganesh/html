@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +13,11 @@
             margin: 0 auto;
             font-family: Arial, sans-serif;
         }
+
         .client-details p {
             font-weight: bold;
         }
+
         .client-details input[type="text"],
         .client-details input[type="email"],
         .client-details input[type="tel"],
@@ -24,6 +27,7 @@
             box-sizing: border-box;
             margin-bottom: 10px;
         }
+
         .client-details input[type="submit"] {
             padding: 10px;
             width: 100%;
@@ -32,49 +36,61 @@
             border: none;
             cursor: pointer;
         }
+
         .client-details input[type="submit"]:hover {
             background-color: #0056b3;
         }
+
         .client-details input::placeholder {
             color: #aaa;
         }
+
         .table-container {
             margin: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
         }
+
         th {
             background-color: #f2f2f2;
         }
+
         .add-item {
             cursor: pointer;
             color: blue;
         }
+
         .add-subitem {
             cursor: pointer;
             color: green;
         }
+
         .button-container {
             display: flex;
             justify-content: center;
             margin-top: 20px;
         }
+
         .get {
             padding: 10px 20px;
             font-size: 16px;
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png.jpg" alt="Your Logo" class="logo-img"/>
+            <img src="logo.png.jpg" alt="Your Logo" class="logo-img" />
         </div>
     </header>
     <div class="cards">
@@ -83,9 +99,9 @@
             <h2>IT Services Agency</h2>
             <p>
                 Bansal Setia & Co
-1st Floor,<br> ℅ Hind Oil Traders
-Tapa Mandi, <br>Barnala
-Punjab – 148108
+                1st Floor,<br> ℅ Hind Oil Traders
+                Tapa Mandi, <br>Barnala
+                Punjab – 148108
             </p>
         </div>
         <div class="client-details">
@@ -114,7 +130,8 @@ Punjab – 148108
     </div>
     <div class="invoice-info">
         <div class="in">
-            <p><span>Invoice Number : </span><input type="number" id="invoice-number" name="invoice-number" placeholder="XXXXXX" required></p>
+            <p><span>Invoice Number : </span><input type="number" id="invoice-number" name="invoice-number"
+                    placeholder="XXXXXX" required></p>
             <p><span>Due Date: </span><input type="date" id="due-date" name="due-date" required></p>
         </div>
         <p><span>Invoice Date : </span><input type="date" id="invoice-date" name="invoice-date" required></p>
@@ -156,36 +173,36 @@ Punjab – 148108
             "Australia", "Austria", "Azerbaijan", "The Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
             "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
             "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad",
-            "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", 
-            "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", 
-            "Dominica", "Dominican Republic", "East Timor (Timor-Leste)", "Ecuador", "Egypt", "El Salvador", 
-            "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", 
-            "The Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", 
-            "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", 
-            "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", 
-            "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", 
-            "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", 
-            "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia, Federated States of", 
-            "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (Burma)", "Namibia", 
-            "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", 
-            "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", 
-            "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", 
-            "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", 
-            "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", 
-            "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Sudan, South", "Suriname", "Sweden", 
-            "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", 
-            "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", 
-            "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", 
+            "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the",
+            "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti",
+            "Dominica", "Dominican Republic", "East Timor (Timor-Leste)", "Ecuador", "Egypt", "El Salvador",
+            "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon",
+            "The Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau",
+            "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland",
+            "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North",
+            "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia",
+            "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives",
+            "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia, Federated States of",
+            "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (Burma)", "Namibia",
+            "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway",
+            "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland",
+            "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia",
+            "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
+            "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
+            "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Sudan, South", "Suriname", "Sweden",
+            "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga",
+            "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates",
+            "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela",
             "Vietnam", "Yemen", "Zambia", "Zimbabwe"
         ];
-    
+
         const stateOptions = {
             usa: ["New York", "California", "Texas"],
             india: ["Maharashtra", "Karnataka", "Tamil Nadu"],
             uk: ["England", "Scotland", "Wales"]
             // Add more countries and states as needed
         };
-    
+
         // Populate country dropdown
         const countrySelect = document.getElementById('country');
         countries.forEach(country => {
@@ -194,15 +211,15 @@ Punjab – 148108
             option.textContent = country;
             countrySelect.appendChild(option);
         });
-    
+
         function populateStates() {
             const stateSelect = document.getElementById('state');
             const selectedCountry = countrySelect.value;
-    
+
             stateSelect.innerHTML = '<option value="">Select State</option>';
-    
+
             if (stateOptions[selectedCountry]) {
-                stateOptions[selectedCountry].forEach(function(state) {
+                stateOptions[selectedCountry].forEach(function (state) {
                     const option = document.createElement('option');
                     option.value = state;
                     option.textContent = state;
@@ -210,20 +227,20 @@ Punjab – 148108
                 });
             }
         }
-    
+
         function filterCountries() {
             const searchInput = document.getElementById('countrySearch').value.toLowerCase();
             const options = countrySelect.options;
-    
+
             for (let i = 0; i < options.length; i++) {
                 const optionText = options[i].textContent.toLowerCase();
                 options[i].style.display = optionText.includes(searchInput) ? '' : 'none';
             }
         }
-        
+
         function handleSubmit(event) {
             event.preventDefault(); // Prevent the default form submission
-            
+
             // Show the pop-up box
             alert("Your address is Saved");
         }
@@ -244,10 +261,20 @@ Punjab – 148108
         }
 
         function addSubitem(element) {
-            const subItem = document.createElement('p');
-            subItem.contentEditable = true;
-            subItem.innerText = 'New Subitem';
-            element.parentNode.insertBefore(subItem, element);
+            // const subItem = document.createElement('p');
+            // subItem.contentEditable = true;
+            // subItem.innerText = 'New Subitem';
+            // element.parentNode.insertBefore(subItem, element);
+            const table = document.getElementById('dynamicTable').getElementsByTagName('tbody')[0];
+            const row = table.insertRow();
+
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+
+            cell1.innerHTML = `<b contenteditable="true">New Sub Item</b> <span class="add-subitem" onclick="addSubitem(this)">[+]</span>`;
+            cell2.innerHTML = `<input type="number" placeholder="USD: Subtotal" class="subtotal" id="item-${itemCount}-subtotal" />`;
+
+            itemCount++; 
         }
 
         function saveItems() {
@@ -329,4 +356,5 @@ Punjab – 148108
         });
     </script>
 </body>
+
 </html>

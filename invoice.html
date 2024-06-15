@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,11 @@
             margin: 10rem;
             border: 1px solid black;
         }
-        .content{
+
+        .content {
             padding: 20px;
         }
+
         .card {
             width: 300px;
             margin: 20px auto;
@@ -21,17 +24,21 @@
             border-radius: 5px;
             font-family: Arial, sans-serif;
         }
+
         .card p {
             /* margin: 10px 0; */
         }
+
         .card h2 {
             margin-top: 0;
         }
+
         .address {
             display: flex;
             justify-content: space-between;
             gap: 20px;
         }
+
         .inde {
             border: 1px solid rgb(177, 175, 175);
             display: grid;
@@ -39,22 +46,25 @@
             width: 100%;
             height: 100%;
         }
+
         .date {
             display: flex;
             justify-content: space-between;
         }
+
         .bold {
             font-weight: bold;
         }
     </style>
 </head>
+
 <body>
-    
+
     <div class="inde">
         <div class="content">
             <header>
                 <div class="logo">
-                    <img src="logo.png.jpg" alt="Your Logo" class="logo-img"/>
+                    <img src="logo.png.jpg" alt="Your Logo" class="logo-img" />
                 </div>
             </header>
             <div class="address">
@@ -124,7 +134,7 @@
         const dueDate = localStorage.getItem('dueDate');
         const invoiceDate = localStorage.getItem('invoiceDate');
         const tableData = JSON.parse(localStorage.getItem('tableData')) || [];
-    
+
         // Populate the client details section
         document.getElementById('client-company-name').textContent = companyName;
         document.getElementById('client-details').innerHTML = `${companyCity}, ${companyState}<br>${country}, ${companyPincode}`;
@@ -132,29 +142,34 @@
         document.getElementById('invoice-number').textContent = invoiceNumber;
         document.getElementById('due-date').textContent = dueDate;
         document.getElementById('invoice-date').textContent = invoiceDate;
-    
+
         // Populate the table with the stored data and calculate total
         const table = document.getElementById('dynamicTable').getElementsByTagName('tbody')[0];
         let total = 0;
-    
+
         tableData.forEach(data => {
             const items = data.item.split('\n'); // Split main item and sub-items into an array
             const mainItem = items.shift(); // Extract the main item
             const subItems = items.length > 0 ? `(${items.join(' ')})` : ''; // Join sub-items into a single string
-    
+
             const row = table.insertRow();
             const cell1 = row.insertCell(0);
             const cell2 = row.insertCell(1);
 
-            cell1.innerHTML = data.item.replace(/\[.+?\]/g, ''); 
-            cell1.innerHTML = `<span class="bold">${mainItem}</span><br>${subItems.replace(/\[.+?\]/g, '')}`;
+            // Remove any [+] symbols before setting the innerHTML
+            const cleanedMainItem = mainItem.replace(/\[\+\]/g, '');
+            const cleanedSubItems = subItems.replace(/\[\+\]/g, '');
+
+            cell1.innerHTML = `<span class="bold">${cleanedMainItem}</span><br>${cleanedSubItems}`;
             cell2.textContent = data.subtotal;
-    
+
             total += parseFloat(data.subtotal) || 0;
         });
+
 
         // Display the total amount
         document.getElementById('total-amount').textContent = `USD ${total.toFixed(2)}`;
     </script>
 </body>
+
 </html>
